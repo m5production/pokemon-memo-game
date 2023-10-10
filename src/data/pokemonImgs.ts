@@ -13,7 +13,7 @@ export const pokemonImgs = [
   poke3,
   poke4,
   poke5,
-  // poke6,
-  // poke7,
-  // poke8,
+  poke6,
+  poke7,
+  poke8,
 ];

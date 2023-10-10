@@ -1,15 +1,14 @@
 import { CardsTable } from '../CardsTable';
 import { ContentWrapper } from '../ContentWrapper';
 import { StyledMain } from './style';
-import { pokemonImgs } from '../../data/pokemonImgs';
-import { getShuffledCardsDataSet } from '../../data/getShuffledCardsDataSet';
+import { useAppSelector } from '../../store/hooks';
 
 export function Main() {
-  const cardsDataSet = getShuffledCardsDataSet(pokemonImgs);
+  const cards = useAppSelector((state) => state.cards);
   return (
     <StyledMain>
       <ContentWrapper>
-        <CardsTable cardsData={cardsDataSet}/>
+        <CardsTable cardsData={cards} />
       </ContentWrapper>
     </StyledMain>
   );

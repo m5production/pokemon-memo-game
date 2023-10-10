@@ -1,6 +1,8 @@
-import { StyledClosedCard, StyledOpenCard } from './style';
+import { ClosedCard } from './ClosedCard';
+import { OpenCard } from './OpenCard';
 import { ICardData } from './type';
 
-export function Card({ id, isOpen, src }: ICardData) {
-  return (isOpen ? <StyledOpenCard src={src} /> : <StyledClosedCard />);
+export function Card(cardData: ICardData) {
+  const { isOpen, src } = cardData;
+  return isOpen ? <OpenCard src={src} /> : <ClosedCard {...cardData} />;
 }
