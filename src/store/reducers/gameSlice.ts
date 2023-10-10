@@ -14,7 +14,7 @@ export interface IGameState {
 }
 
 const initialState: IGameState = {
-  cards: getShuffledCardsDataSet(pokemonImgs),
+  cards: [],
   firstInRoundOpenCard: null,
   isCardsClickable: true,
   isWin: false,
@@ -51,6 +51,10 @@ export const gameSlice = createSlice({
   name: 'game',
   initialState,
   reducers: {
+    setPokemonCards: (state, { payload }: PayloadAction<number>) => {
+      const pokemonImgsSet = [...pokemonImgs].slice(0, payload);
+      state.cards = getShuffledCardsDataSet(pokemonImgsSet);
+    },
     toggleCardOpen: (
       { cards },
       { payload: { id } }: PayloadAction<Pick<ICardData, 'id'>>
@@ -74,6 +78,7 @@ export const gameSlice = createSlice({
 });
 
 export const {
+  setPokemonCards,
   toggleCardOpen,
   setFirstInRoundOpenCard,
   resetFirstInRoundOpenCard,

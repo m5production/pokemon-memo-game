@@ -1,8 +1,9 @@
 import { StyledCardsTable } from './style';
 import { Card } from '../Card';
-import { ICardData } from '../Card/type';
+import { useAppSelector } from '../../store/hooks';
 
-export function CardsTable({ cardsData }: { cardsData: ICardData[] }) {
+export function CardsTable() {
+  const cardsData = useAppSelector((state) => state.cards);
   return (
     <StyledCardsTable $numberOfColumns={2}>
       {cardsData.map((cardData) => (
