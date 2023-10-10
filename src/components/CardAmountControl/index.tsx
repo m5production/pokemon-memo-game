@@ -8,14 +8,14 @@ export function CardAmountControl() {
   const dispatch = useAppDispatch();
   const [pokemonCtr, setPokemonsCtr] = useState<number>(2);
   const handlePokemonCtrChange: ChangeEventHandler<HTMLInputElement> = (e) => {
-    const newPokemonsCtr = Number(e.target.value)
+    const newPokemonsCtr = Number(e.target.value);
     setPokemonsCtr(newPokemonsCtr);
-    dispatch(setPokemonCards(newPokemonsCtr))
+    dispatch(setPokemonCards(newPokemonsCtr));
   };
 
   return (
     <StyledCardAmountControlWrapper>
-      <PokemonAmountDisplay pokeomonCtr={pokemonCtr}/>
+      <PokemonAmountDisplay pokeomonCtr={pokemonCtr} />
       <input
         type="range"
         step={1}

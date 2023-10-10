@@ -9,4 +9,18 @@ export const StyledModal = styled.div`
   border-radius: 20px;
 
   background-color: yellow;
+
+  text-align: center;
+`;
+
+export const StyledBtn = styled.button`
+  border-radius: 5px;
+
+  font-size: 2rem;
+
+  &:hover {
+    background-color: darkgrey;
+
+    cursor: pointer;
+  }
 `;

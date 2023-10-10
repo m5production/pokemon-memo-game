@@ -1,10 +1,11 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { ICardData } from '../../components/Card/type';
 import { getShuffledCardsDataSet } from '../../data/getShuffledCardsDataSet';
-import { pokemonImgs } from '../../data/pokemonImgs';
 import { getCardById } from './helpers/getCurrentCard';
 import { setDelayBeforeFlipBack } from './helpers/setDelayBeforeFlipBack';
 import { isAllCardsOpen } from './helpers/isAllCardsOpen';
+import { getPokemonsImgs } from './helpers/getPokemonsImgs';
+import { AppThunk } from '../store';
 
 export interface IGameState {
   cards: ICardData[];
@@ -47,13 +48,24 @@ export const handleCardOpen = createAsyncThunk(
   }
 );
 
+export const resetGame =
+  (newPokemonCtr = 2): AppThunk =>
+  (dispatch) => {
+    dispatch(removePokemonCards());
+    dispatch(toggleWin());
+    dispatch(setPokemonCards(newPokemonCtr));
+  };
+
 export const gameSlice = createSlice({
   name: 'game',
   initialState,
   reducers: {
     setPokemonCards: (state, { payload }: PayloadAction<number>) => {
-      const pokemonImgsSet = [...pokemonImgs].slice(0, payload);
+      const pokemonImgsSet = getPokemonsImgs(payload);
       state.cards = getShuffledCardsDataSet(pokemonImgsSet);
+    },
+    removePokemonCards: (state) => {
+      state.cards = [];
     },
     toggleCardOpen: (
       { cards },
@@ -72,13 +84,14 @@ export const gameSlice = createSlice({
       state.isCardsClickable = !state.isCardsClickable;
     },
     toggleWin: (state) => {
-      state.isWin = true;
+      state.isWin = !state.isWin;
     },
   },
 });
 
 export const {
   setPokemonCards,
+  removePokemonCards,
   toggleCardOpen,
   setFirstInRoundOpenCard,
   resetFirstInRoundOpenCard,
