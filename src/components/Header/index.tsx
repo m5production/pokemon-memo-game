@@ -1,6 +1,6 @@
-import { CardAmountControl } from '../CardAmountControl';
+import { PokemonAmountControl } from '../CardAmountControl';
 import { ContentWrapper } from '../ContentWrapper';
-import { RoundCounter } from '../RoundCtr';
+import { RoundCounter } from '../RoundCtrDisplay';
 import { StyledHeader, StyledHeaderContentWrapper } from './style';
 
 export function Header() {
@@ -10,7 +10,7 @@ export function Header() {
         <StyledHeaderContentWrapper>
           <h1>Pokemon Memo Game</h1>
           <RoundCounter />
-          <CardAmountControl />
+          <PokemonAmountControl />
         </StyledHeaderContentWrapper>
       </ContentWrapper>
     </StyledHeader>

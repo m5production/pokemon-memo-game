@@ -4,7 +4,7 @@ import { StyledCardAmountControlWrapper, StyledPokemonCtrControlLabel } from './
 import { useAppDispatch } from '../../store/hooks';
 import { setPokemonCards } from '../../store/reducers/gameSlice';
 
-export function CardAmountControl() {
+export function PokemonAmountControl() {
   const dispatch = useAppDispatch();
   const [pokemonCtr, setPokemonsCtr] = useState<number>(2);
   const handlePokemonCtrChange: ChangeEventHandler<HTMLInputElement> = (e) => {
@@ -15,6 +15,7 @@ export function CardAmountControl() {
 
   return (
     <StyledCardAmountControlWrapper>
+      How many pokemons will you play with?
       <StyledPokemonCtrControlLabel>
         <input
           type="range"

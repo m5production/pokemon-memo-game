@@ -4,6 +4,8 @@ export const StyledCardAmountControlWrapper = styled.div`
   display: flex;
   align-items: center;
   gap: 1rem;
+
+  font-size: 1.5rem;
 `;
 
 export const StyledPokemonCtrControlLabel = styled.label`
