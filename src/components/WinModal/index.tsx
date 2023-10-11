@@ -1,5 +1,5 @@
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { resetGame } from '../../store/reducers/thunks/resetGame';
+import { resetGame } from '../../store/reducers/sharedThunks/resetGame';
 import { WindowBlinder } from '../WindowBlinder';
 import { StyledBtn, StyledModal } from './style';
 

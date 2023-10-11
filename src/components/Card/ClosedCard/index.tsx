@@ -1,5 +1,5 @@
 import { useAppDispatch } from '../../../store/hooks';
-import { handleCardOpen } from '../../../store/reducers/thunks/handleCardOpen';
+import { handleCardOpen } from '../CardStateChangers/handleCardOpen';
 import { StyledCardBasic } from '../style';
 import { ICardData } from '../type';
 
