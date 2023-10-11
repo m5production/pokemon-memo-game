@@ -2,6 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { ICardData } from '../../../components/Card/type';
 import {
   IGameState,
+  incrementRoundNumber,
   resetFirstInRoundOpenCard,
   setFirstInRoundOpenCard,
   toggleCardOpen,
@@ -22,6 +23,7 @@ export const handleCardOpen = createAsyncThunk(
     dispatch(toggleCardOpen({ id }));
     if (firstInRoundOpenCard === null) {
       dispatch(setFirstInRoundOpenCard(actionData));
+      dispatch(incrementRoundNumber());
     } else {
       if (firstInRoundOpenCard.src === src) {
         dispatch(resetFirstInRoundOpenCard());

@@ -9,6 +9,7 @@ export interface IGameState {
   firstInRoundOpenCard: ICardData | null;
   isCardsClickable: boolean;
   isWin: boolean;
+  roundNumber: number;
 }
 
 const initialState: IGameState = {
@@ -16,6 +17,7 @@ const initialState: IGameState = {
   firstInRoundOpenCard: null,
   isCardsClickable: true,
   isWin: false,
+  roundNumber: 0,
 };
 
 export const gameSlice = createSlice({
@@ -48,6 +50,12 @@ export const gameSlice = createSlice({
     toggleWin: (state) => {
       state.isWin = !state.isWin;
     },
+    incrementRoundNumber: (state) => {
+      state.roundNumber += 1;
+    },
+    resetRoundNumberCtr: (state) => {
+      state.roundNumber = 0;
+    },
   },
 });
 
@@ -58,5 +66,7 @@ export const {
   resetFirstInRoundOpenCard,
   toggleIsCardsClickable,
   toggleWin,
+  incrementRoundNumber,
+  resetRoundNumberCtr,
 } = gameSlice.actions;
 export default gameSlice.reducer;
