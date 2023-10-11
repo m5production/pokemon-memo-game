@@ -1,5 +1,5 @@
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { resetGame } from '../../store/reducers/gameSlice';
+import { resetGame } from '../../store/reducers/thunks/resetGame';
 import { WindowBlinder } from '../WindowBlinder';
 import { StyledBtn, StyledModal } from './style';
 
@@ -7,7 +7,8 @@ export function WinModal() {
   const dispatch = useAppDispatch();
   const { length } = useAppSelector((state) => state.cards);
   const handleGameReset = () => {
-    dispatch(resetGame(length));
+    const newPokemonSetLength = length / 2;
+    dispatch(resetGame(newPokemonSetLength));
   };
   return (
     <WindowBlinder>

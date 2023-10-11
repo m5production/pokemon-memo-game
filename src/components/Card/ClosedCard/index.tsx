@@ -1,6 +1,6 @@
 import { useAppDispatch } from '../../../store/hooks';
+import { handleCardOpen } from '../../../store/reducers/thunks/handleCardOpen';
 import { StyledCardBasic } from '../style';
-import { handleCardOpen } from '../../../store/reducers/gameSlice';
 import { ICardData } from '../type';
 
 export function ClosedCard(cardData: ICardData) {

@@ -1,11 +1,8 @@
-import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { ICardData } from '../../components/Card/type';
-import { getShuffledCardsDataSet } from '../../data/getShuffledCardsDataSet';
+import { getShuffledCardsDataSet } from './helpers/cardsSetProcessors/getShuffledCardsDataSet';
 import { getCardById } from './helpers/getCurrentCard';
-import { setDelayBeforeFlipBack } from './helpers/setDelayBeforeFlipBack';
-import { isAllCardsOpen } from './helpers/isAllCardsOpen';
-import { getPokemonsImgs } from './helpers/getPokemonsImgs';
-import { AppThunk } from '../store';
+import { getPokemonsImgs } from './helpers/cardsSetProcessors/getPokemonsImgs';
 
 export interface IGameState {
   cards: ICardData[];
@@ -21,51 +18,16 @@ const initialState: IGameState = {
   isWin: false,
 };
 
-export const handleCardOpen = createAsyncThunk(
-  'game/handleCardOpen',
-  async (actionData: ICardData, { dispatch, getState }) => {
-    const state = getState() as IGameState;
-    const { cards, isCardsClickable, firstInRoundOpenCard } = state;
-    if (!isCardsClickable) return;
-    const { id, src } = actionData;
-    dispatch(toggleIsCardsClickable());
-    dispatch(toggleCardOpen({ id }));
-    if (firstInRoundOpenCard === null) {
-      dispatch(setFirstInRoundOpenCard(actionData));
-    } else {
-      if (firstInRoundOpenCard.src === src) {
-        dispatch(resetFirstInRoundOpenCard());
-        const isAllOpen = isAllCardsOpen(cards);
-        if (isAllOpen) dispatch(toggleWin());
-      } else {
-        await setDelayBeforeFlipBack(1);
-        dispatch(toggleCardOpen(firstInRoundOpenCard));
-        dispatch(toggleCardOpen(actionData));
-        dispatch(resetFirstInRoundOpenCard());
-      }
-    }
-    dispatch(toggleIsCardsClickable());
-  }
-);
-
-export const resetGame =
-  (newPokemonCtr = 2): AppThunk =>
-  (dispatch) => {
-    dispatch(removePokemonCards());
-    dispatch(toggleWin());
-    dispatch(setPokemonCards(newPokemonCtr));
-  };
-
 export const gameSlice = createSlice({
   name: 'game',
   initialState,
   reducers: {
-    setPokemonCards: (state, { payload }: PayloadAction<number>) => {
+    setPokemonCards: (
+      state,
+      { payload }: PayloadAction<number | undefined>
+    ) => {
       const pokemonImgsSet = getPokemonsImgs(payload);
       state.cards = getShuffledCardsDataSet(pokemonImgsSet);
-    },
-    removePokemonCards: (state) => {
-      state.cards = [];
     },
     toggleCardOpen: (
       { cards },
@@ -91,7 +53,6 @@ export const gameSlice = createSlice({
 
 export const {
   setPokemonCards,
-  removePokemonCards,
   toggleCardOpen,
   setFirstInRoundOpenCard,
   resetFirstInRoundOpenCard,

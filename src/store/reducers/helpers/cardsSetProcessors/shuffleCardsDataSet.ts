@@ -1,4 +1,4 @@
-import { ICardData } from '../components/Card/type';
+import { ICardData } from '../../../../components/Card/type';
 
 export function shuffleCardsDataSet(cardsDataSet: ICardData[]) {
   const shuffledCardsDataSet = [...cardsDataSet];
