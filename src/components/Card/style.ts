@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 
 export const StyledCardBasic = styled.div`
-  width: 100px;
-  height: 100px;
+  flex-shrink: 0;
+  width: clamp(100px, 30%, 250px);
+  aspect-ratio: 1;
 
   border: 2px solid purple;
   border-radius: 10px;

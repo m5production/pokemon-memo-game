@@ -1,6 +1,6 @@
 import { ChangeEventHandler, useState } from 'react';
 import { PokemonAmountDisplay } from '../PokemonAmountDisplay';
-import { StyledCardAmountControlWrapper } from './style';
+import { StyledCardAmountControlWrapper, StyledPokemonCtrControlLabel } from './style';
 import { useAppDispatch } from '../../store/hooks';
 import { setPokemonCards } from '../../store/reducers/gameSlice';
 
@@ -15,15 +15,17 @@ export function CardAmountControl() {
 
   return (
     <StyledCardAmountControlWrapper>
+      <StyledPokemonCtrControlLabel>
+        <input
+          type="range"
+          step={1}
+          min={2}
+          max={8}
+          value={pokemonCtr}
+          onChange={handlePokemonCtrChange}
+        />
+      </StyledPokemonCtrControlLabel>
       <PokemonAmountDisplay pokeomonCtr={pokemonCtr} />
-      <input
-        type="range"
-        step={1}
-        min={2}
-        max={8}
-        value={pokemonCtr}
-        onChange={handlePokemonCtrChange}
-      />
     </StyledCardAmountControlWrapper>
   );
 }
