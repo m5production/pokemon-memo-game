@@ -4,7 +4,7 @@ import { Header } from '../components/Header';
 import { Main } from '../components/Main';
 import { WinModal } from '../components/WinModal';
 import { useEffect } from 'react';
-import { GlobalStyles } from '../GlobalStyles';
+import { GlobalStyles } from '../shared-styles/GlobalStyles';
 import { StyledApp } from './style';
 
 function App() {
