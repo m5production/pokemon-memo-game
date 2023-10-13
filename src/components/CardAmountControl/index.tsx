@@ -21,7 +21,7 @@ export function PokemonAmountControl() {
           type="range"
           step={1}
           min={2}
-          max={8}
+          max={12}
           value={pokemonCtr}
           onChange={handlePokemonCtrChange}
         />

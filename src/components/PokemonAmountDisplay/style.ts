@@ -1,9 +1,6 @@
 import styled from 'styled-components';
 
 export const StyledPokemonAmountDisplay = styled.div`
-  height: 3rem;
-  width: 3rem;
-
   padding: 0.3rem;
 
   background-color: white;
