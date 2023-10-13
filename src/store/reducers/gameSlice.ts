@@ -31,12 +31,14 @@ export const gameSlice = createSlice({
       const pokemonImgsSet = getPokemonsImgs(payload);
       state.cards = getShuffledCardsDataSet(pokemonImgsSet);
     },
-    toggleCardOpen: (
+    setCardStatus: (
       { cards },
-      { payload: { id } }: PayloadAction<Pick<ICardData, 'id'>>
+      {
+        payload: { id, status },
+      }: PayloadAction<Pick<ICardData, 'id' | 'status'>>
     ) => {
       const currentCard = getCardById(cards, id);
-      currentCard.isOpen = !currentCard.isOpen;
+      currentCard.status = status;
     },
     setFirstInRoundOpenCard: (state, { payload }: PayloadAction<ICardData>) => {
       state.firstInRoundOpenCard = payload;
@@ -61,7 +63,7 @@ export const gameSlice = createSlice({
 
 export const {
   setPokemonCards,
-  toggleCardOpen,
+  setCardStatus,
   setFirstInRoundOpenCard,
   resetFirstInRoundOpenCard,
   toggleIsCardsClickable,

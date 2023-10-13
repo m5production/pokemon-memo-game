@@ -1,1 +1,2 @@
-export type ICardData = { src: string; id: string; isOpen: boolean };
+export type ICardData = { src: string; id: string; status: ICardStatus};
+export type ICardStatus = 'opened' | 'closed' | 'invisible';

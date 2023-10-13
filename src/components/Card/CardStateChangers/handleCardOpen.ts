@@ -2,7 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { ICardData } from '../type';
 import {
   IGameState,
-  toggleCardOpen,
+  setCardStatus,
   toggleIsCardsClickable,
 } from '../../../store/reducers/gameSlice';
 import { startRound } from './startRound';
@@ -16,7 +16,7 @@ export const handleCardOpen = createAsyncThunk(
     if (!isCardsClickable) return;
     const { id } = actionData;
     dispatch(toggleIsCardsClickable());
-    dispatch(toggleCardOpen({ id }));
+    dispatch(setCardStatus({ id, status: 'opened' }));
     if (firstInRoundOpenCard === null) {
       startRound(actionData, dispatch);
     } else {
