@@ -18,19 +18,23 @@ export async function stopRound({
   firstCard: ICardData;
   secondCard: ICardData;
   cards: ICardData[];
-  dispatch: ThunkDispatch<RootState, unknown, AnyAction>
+  dispatch: ThunkDispatch<RootState, unknown, AnyAction>;
 }) {
   if (firstCard.src === secondCard.src) {
     const isLastCardOpen = checkIsLastCardOpen(cards);
-    if (isLastCardOpen) dispatch(toggleWin());
+    if (isLastCardOpen) {
+      dispatch(toggleWin());
+      dispatch(resetFirstInRoundOpenCard());
+      return;
+    }
     dispatch(resetFirstInRoundOpenCard());
     await setDelayBeforeFlipBack(1);
-    dispatch(setCardStatus({id: firstCard.id, status: 'invisible'}));
-    dispatch(setCardStatus({id: secondCard.id, status: 'invisible'}));
+    dispatch(setCardStatus({ id: firstCard.id, status: 'invisible' }));
+    dispatch(setCardStatus({ id: secondCard.id, status: 'invisible' }));
   } else {
     await setDelayBeforeFlipBack(1);
-    dispatch(setCardStatus({id: firstCard.id, status: 'closed'}));
-    dispatch(setCardStatus({id: secondCard.id, status: 'closed'}));
+    dispatch(setCardStatus({ id: firstCard.id, status: 'closed' }));
+    dispatch(setCardStatus({ id: secondCard.id, status: 'closed' }));
     dispatch(resetFirstInRoundOpenCard());
   }
 }
