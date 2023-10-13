@@ -1,6 +1,6 @@
 import { PokemonAmountControl } from '../CardAmountControl';
 import { ContentWrapper } from '../ContentWrapper';
-import { RoundCounter } from '../RoundCtrDisplay';
+import { RoundCounter } from '../RoundCounter';
 import { StyledHeader, StyledHeaderContentWrapper } from './style';
 
 export function Header() {
