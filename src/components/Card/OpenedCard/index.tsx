@@ -1,5 +1,5 @@
-import { StyledOpenCard } from './style';
+import { StyledOpenedCard } from './style';
 
 export function OpenedCard({ src }: { src: string }) {
-  return <StyledOpenCard $src={src} />;
+  return <StyledOpenedCard $src={src} />;
 }
