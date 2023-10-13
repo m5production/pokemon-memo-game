@@ -18,7 +18,7 @@ export async function stopRound({
   firstCard: ICardData;
   secondCard: ICardData;
   cards: ICardData[];
-  dispatch: ThunkDispatch<RootState, unknown, AnyAction>;
+  dispatch: ThunkDispatch<unknown, unknown, AnyAction>;
 }) {
   if (firstCard.src === secondCard.src) {
     const isLastCardOpen = checkIsLastCardOpen(cards);
