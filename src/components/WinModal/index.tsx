@@ -5,16 +5,16 @@ import { StyledBtn, StyledModal } from './style';
 
 export function WinModal() {
   const dispatch = useAppDispatch();
-  const { length } = useAppSelector((state) => state.cards);
-  const roundsNumber = useAppSelector((state) => state.roundNumber);
+  const { cards } = useAppSelector((state) => state.cards);
+  const { roundNumber } = useAppSelector((state) => state.game);
   const handleGameReset = () => {
-    const newPokemonSetLength = length / 2;
+    const newPokemonSetLength = cards.length / 2;
     dispatch(resetGame(newPokemonSetLength));
   };
   return (
     <WindowBlinder>
       <StyledModal>
-        <h2>Congratulations! You won in {roundsNumber} rounds!</h2>
+        <h2>Congratulations! You won in {roundNumber} rounds!</h2>
         <StyledBtn type="button" onClick={handleGameReset}>
           Play again!
         </StyledBtn>

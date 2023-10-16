@@ -1,6 +1,6 @@
+import { setCardStatus } from '../../../store/reducers/cardsSlice';
 import {
   resetFirstInRoundOpenCard,
-  setCardStatus,
   toggleWin,
 } from '../../../store/reducers/gameSlice';
 import { checkIsLastCardOpen } from '../../../store/reducers/helpers/checkIsLastCardOpen';

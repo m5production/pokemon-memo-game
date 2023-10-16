@@ -2,7 +2,7 @@ import { ChangeEventHandler, useState } from 'react';
 import { PokemonAmountDisplay } from '../PokemonAmountDisplay';
 import { StyledCardAmountControlWrapper, StyledPokemonCtrControlLabel } from './style';
 import { useAppDispatch } from '../../store/hooks';
-import { setPokemonCards } from '../../store/reducers/gameSlice';
+import { setPokemonCards } from '../../store/reducers/cardsSlice';
 
 export function PokemonAmountControl() {
   const dispatch = useAppDispatch();

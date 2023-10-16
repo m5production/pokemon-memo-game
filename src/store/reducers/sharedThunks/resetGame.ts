@@ -1,5 +1,6 @@
 import { AppThunk } from '../../store';
-import { resetRoundNumberCtr, setPokemonCards, toggleWin } from '../gameSlice';
+import { setPokemonCards } from '../cardsSlice';
+import { resetRoundNumberCtr, toggleWin } from '../gameSlice';
 
 export const resetGame =
   (newPokemonCtr?: number): AppThunk =>

@@ -1,18 +1,20 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { ICardData } from '../type';
-import {
-  IGameState,
-  setCardStatus,
-  toggleIsCardsClickable,
-} from '../../../store/reducers/gameSlice';
+import { IGameState } from '../../../store/reducers/gameSlice';
 import { startRound } from './startRound';
 import { stopRound } from './stopRound';
+import {
+  setCardStatus,
+  toggleIsCardsClickable,
+} from '../../../store/reducers/cardsSlice';
+import { RootState } from '../../../store/store';
 
 export const handleCardOpen = createAsyncThunk(
   'game/handleCardOpen',
   async (actionData: ICardData, { dispatch, getState }) => {
-    const state = getState() as IGameState;
-    const { cards, isCardsClickable, firstInRoundOpenCard } = state;
+    const { cards: cardsState, game } = getState() as RootState;
+    const { cards } = cardsState;
+    const { isCardsClickable, firstInRoundOpenCard } = game;
     if (!isCardsClickable) return;
     const { id } = actionData;
     dispatch(toggleIsCardsClickable());
