@@ -29,8 +29,11 @@ export const gameSlice = createSlice({
     resetRoundCardsAnimationCtr: (state) => {
       state.roundCardsAnimationCtr = 0;
     },
-    toggleIsAnimationOnRoundLoose: (state) => {
-      state.isAnimationOnRoundLoose = !state.isAnimationOnRoundLoose;
+    setIsAnimationOnRoundLoose: (
+      state,
+      { payload }: PayloadAction<boolean>
+    ) => {
+      state.isAnimationOnRoundLoose = payload;
     },
     resetRound: (state) => {
       state.isAnimationOnRoundLoose = false;
@@ -46,7 +49,7 @@ export const {
   resetRoundCards,
   incrementRoundCardsAnimationCtr,
   resetRoundCardsAnimationCtr,
-  toggleIsAnimationOnRoundLoose,
+  setIsAnimationOnRoundLoose,
   resetRound,
 } = actions;
 export default reducer;

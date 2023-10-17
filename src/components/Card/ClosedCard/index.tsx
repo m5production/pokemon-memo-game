@@ -1,8 +1,10 @@
 import { useAppDispatch, useAppSelector } from '../../../store/hooks';
 import { ICardAnimationStatus, ICardData } from '../type';
-import { handleClosedCardAnimationEnd } from './helpers/handleClosedCardAnimationEnd';
+import { handleClosedCardCloseAnimationEnd } from './helpers/handleClosedCardCloseAnimationEnd';
 import { handleClosedCardClick } from './helpers/handleClosedCardClick';
 import { StyledClosedCard } from './style';
+import { handleClosedCardOpenAnimationEnd } from './helpers/handleClosedCardOpenAnimationEnd';
+import { useEffect } from 'react';
 
 export function ClosedCard({
   cardData,
@@ -15,6 +17,11 @@ export function ClosedCard({
 }) {
   const dispatch = useAppDispatch();
   const { isCardsClickable } = useAppSelector((state) => state.cards);
+  const { isAnimationOnRoundLoose } = useAppSelector((state) => state.round);
+
+  useEffect(() => {
+    if (!isAnimationOnRoundLoose) setAnimationStatus('idle');
+  }, [isAnimationOnRoundLoose]);
 
   const onCardClick = () => {
     if (animationStatus !== 'idle' || !isCardsClickable) return;
@@ -23,7 +30,11 @@ export function ClosedCard({
   };
 
   const handleAnimationEnd = () => {
-    dispatch(handleClosedCardAnimationEnd(cardData));
+    if (isAnimationOnRoundLoose) {
+      dispatch(handleClosedCardCloseAnimationEnd());
+    } else {
+      dispatch(handleClosedCardOpenAnimationEnd(cardData));
+    }
   };
 
   return (

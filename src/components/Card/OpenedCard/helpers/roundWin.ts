@@ -1,29 +1,26 @@
 import { ROUND_CARDS_OPEN_TIME_IN_MILLIS } from '../../../../constants';
-import { toggleIsCardsClickable } from '../../../../store/reducers/cardsSlice';
+import { setIsCardsClickable } from '../../../../store/reducers/cardsSlice';
 import { toggleWin } from '../../../../store/reducers/gameSlice';
 import { isAllCardsOpen } from '../../../../store/reducers/helpers/isAllCardsOpen';
+import { resetRound } from '../../../../store/reducers/roundSlice';
 import { AppDispatch, RootState } from '../../../../store/store';
-import { removeRoundCards } from './removeRoundCards';
+import { hideCardsPlayedInRound } from './hideCardsPlayedInRound';
 import { setDelay } from './setDelay';
 
-export function roundWin({
-  firstId,
-  secondId,
-}: {
-  firstId: string;
-  secondId: string;
-}) {
+export function roundWin() {
   return async function (dispatch: AppDispatch, getState: () => RootState) {
     const {
       cards: { cards },
+      round: { roundCards },
     } = getState();
     if (isAllCardsOpen(cards)) {
       dispatch(toggleWin());
-      dispatch(toggleIsCardsClickable());
       return;
     }
+    const [{ id: firstId }, { id: secondId }] = roundCards;
+    dispatch(setIsCardsClickable(true));
+    dispatch(resetRound());
     await setDelay(ROUND_CARDS_OPEN_TIME_IN_MILLIS);
-    dispatch(removeRoundCards({ firstId, secondId }));
-    dispatch(toggleIsCardsClickable());
+    dispatch(hideCardsPlayedInRound({ firstId, secondId }));
   };
 }

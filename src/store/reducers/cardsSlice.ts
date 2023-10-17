@@ -34,12 +34,15 @@ export const cardsSlice = createSlice({
       const currentCard = getCardById(cards, id);
       currentCard.status = status;
     },
-    toggleIsCardsClickable: (state) => {
-      state.isCardsClickable = !state.isCardsClickable;
+    setIsCardsClickable: (state, { payload }: PayloadAction<boolean>) => {
+      state.isCardsClickable = payload;
     },
   },
 });
 
-export const { setPokemonCards, setCardStatus, toggleIsCardsClickable } =
-  cardsSlice.actions;
+export const {
+  setPokemonCards,
+  setCardStatus,
+  setIsCardsClickable,
+} = cardsSlice.actions;
 export default cardsSlice.reducer;

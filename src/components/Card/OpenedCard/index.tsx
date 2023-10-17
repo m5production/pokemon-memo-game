@@ -1,8 +1,9 @@
 import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../../store/hooks';
 import { ICardAnimationStatus, ICardData } from '../type';
-import { handleOpenCardAnimationEnd } from './helpers/handleOpenCardAnimationEnd';
+import { handleOpenCardOpenAnimationEnd } from './helpers/handleOpenCardOpenAnimationEnd';
 import { StyledOpenedCard } from './style';
+import { handleOpenCardCloseAnimationEnd } from './helpers/handleOpenCardCloseAnimationEnd';
 
 export function OpenedCard({
   cardData,
@@ -23,8 +24,12 @@ export function OpenedCard({
   const { src } = cardData;
 
   const handleAnimationEnd = () => {
-    if (!isAnimationOnRoundLoose) setAnimationStatus('idle');
-    dispatch(handleOpenCardAnimationEnd());
+    if (isAnimationOnRoundLoose) {
+      dispatch(handleOpenCardCloseAnimationEnd());
+    } else {
+      setAnimationStatus('idle');
+      dispatch(handleOpenCardOpenAnimationEnd());
+    }
   };
   return (
     <StyledOpenedCard

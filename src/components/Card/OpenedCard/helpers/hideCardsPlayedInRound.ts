@@ -1,7 +1,7 @@
 import { setCardStatus } from '../../../../store/reducers/cardsSlice';
 import { AppDispatch } from '../../../../store/store';
 
-export function removeRoundCards({
+export function hideCardsPlayedInRound({
   firstId,
   secondId,
 }: {
