@@ -36,7 +36,6 @@ export const cardsSlice = createSlice({
     },
     toggleIsCardsClickable: (state) => {
       state.isCardsClickable = !state.isCardsClickable;
-      console.log('adsf');
     },
   },
 });

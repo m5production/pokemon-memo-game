@@ -1,17 +1,32 @@
+import { useState } from 'react';
 import { ClosedCard } from './ClosedCard';
 import { InvisibleCard } from './InvisibleCard';
 import { OpenedCard } from './OpenedCard';
-import { ICardData } from './type';
+import { ICardAnimationStatus, ICardData } from './type';
 
 export function Card(cardData: ICardData) {
-  const { status, src } = cardData;
+  const [animationStatus, setAnimationStatus] =
+    useState<ICardAnimationStatus>('idle');
+  const { status } = cardData;
   let card;
   switch (status) {
     case 'closed':
-      card = <ClosedCard {...cardData} />;
+      card = (
+        <ClosedCard
+          cardData={cardData}
+          animationStatus={animationStatus}
+          setAnimationStatus={setAnimationStatus}
+        />
+      );
       break;
     case 'opened':
-      card = <OpenedCard src={src} />;
+      card = (
+        <OpenedCard
+          cardData={cardData}
+          animationStatus={animationStatus}
+          setAnimationStatus={setAnimationStatus}
+        />
+      );
       break;
     default:
       card = <InvisibleCard />;
