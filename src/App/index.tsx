@@ -5,14 +5,14 @@ import { WinModal } from '../components/WinModal';
 import { useEffect } from 'react';
 import { GlobalStyles } from '../shared-styles/GlobalStyles';
 import { StyledApp } from './style';
-import { setPokemonCards } from '../store/reducers/cardsSlice';
+import { initializeCards } from './initializeCards';
 
 function App() {
   const { isWin } = useAppSelector((state) => state.game);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    dispatch(setPokemonCards());
+    dispatch(initializeCards());
   }, []);
 
   return (

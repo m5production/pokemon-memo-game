@@ -1,11 +1,12 @@
-import { AppThunk } from '../../store';
-import { setPokemonCards } from '../cardsSlice';
+import { AppThunk, RootState } from '../../store';
 import { resetRoundNumberCtr, toggleWin } from '../gameSlice';
+import { fetchAndSetImgs } from '../pokemonImagesSlice';
 
 export const resetGame =
   (newPokemonCtr?: number): AppThunk =>
-  (dispatch) => {
+  (dispatch, getState) => {
+    const {fetchedPokemonImages: {totalCount}} = getState() as RootState;
     dispatch(toggleWin());
-    dispatch(setPokemonCards(newPokemonCtr));
+    dispatch(fetchAndSetImgs({maxNumber: totalCount, numberOfImgs: newPokemonCtr || 2}));
     dispatch(resetRoundNumberCtr());
   };

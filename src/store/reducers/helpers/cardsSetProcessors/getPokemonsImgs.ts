@@ -1,5 +1,5 @@
-import { pokemonImgs } from '../../../../data/pokemonImgs';
+import { pokemonBackupImgs } from '../../../../data/pokemonImgs';
 
 export function getPokemonsImgs(pokemonsCtr = 2): string[] {
-  return [...pokemonImgs].slice(0, pokemonsCtr);
+  return [...pokemonBackupImgs].slice(0, pokemonsCtr);
 }

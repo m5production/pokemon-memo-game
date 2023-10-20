@@ -2,12 +2,14 @@ import { Action, ThunkAction, configureStore } from '@reduxjs/toolkit';
 import gameReducer from './reducers/gameSlice';
 import cardsReducer from './reducers/cardsSlice';
 import roundReducer from './reducers/roundSlice';
+import fetchedPokemonImagesSlice from './reducers/pokemonImagesSlice';
 
 export const store = configureStore({
   reducer: {
     game: gameReducer,
     cards: cardsReducer,
     round: roundReducer,
+    fetchedPokemonImages: fetchedPokemonImagesSlice,
   }
 });
 

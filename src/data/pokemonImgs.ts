@@ -11,7 +11,7 @@ import poke10 from '../assets/pokemon-imgs/475.svg';
 import poke11 from '../assets/pokemon-imgs/491.svg';
 import poke12 from '../assets/pokemon-imgs/8.svg';
 
-export const pokemonImgs = [
+export const pokemonBackupImgs = [
   poke1,
   poke2,
   poke3,

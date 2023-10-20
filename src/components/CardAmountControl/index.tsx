@@ -2,15 +2,15 @@ import { ChangeEventHandler, useState } from 'react';
 import { PokemonAmountDisplay } from '../PokemonAmountDisplay';
 import { StyledCardAmountControlWrapper, StyledPokemonCtrControlLabel } from './style';
 import { useAppDispatch } from '../../store/hooks';
-import { setPokemonCards } from '../../store/reducers/cardsSlice';
+import { setUserSetNumberOfPokemons } from '../../store/reducers/cardsSlice';
 
 export function PokemonAmountControl() {
   const dispatch = useAppDispatch();
-  const [pokemonCtr, setPokemonsCtr] = useState<number>(2);
+  const [pokemonCtr, setPokemonCtr] = useState<number>(2);
   const handlePokemonCtrChange: ChangeEventHandler<HTMLInputElement> = (e) => {
     const newPokemonsCtr = Number(e.target.value);
-    setPokemonsCtr(newPokemonsCtr);
-    dispatch(setPokemonCards(newPokemonsCtr));
+    setPokemonCtr(newPokemonsCtr);
+    dispatch(setUserSetNumberOfPokemons(newPokemonsCtr));
   };
 
   return (

@@ -7,12 +7,11 @@ import { StyledBtn, StyledModal } from './style';
 
 export function WinModal() {
   const dispatch = useAppDispatch();
-  const { cards } = useAppSelector((state) => state.cards);
+  const { userSetNumberOfPokemons } = useAppSelector((state) => state.cards);
   const { roundNumber } = useAppSelector((state) => state.game);
   const handleGameReset = () => {
-    const newPokemonSetLength = cards.length / 2;
     dispatch(resetRound());
-    dispatch(resetGame(newPokemonSetLength));
+    dispatch(resetGame(userSetNumberOfPokemons));
     dispatch(setIsCardsClickable(true));
   };
   return (

@@ -9,4 +9,8 @@ export const StyledCardsTable = styled.div<{ $numberOfColumns: number }>`
   flex-wrap: wrap;
   gap: 1.5rem;
   justify-content: center;
+
+  @media(max-width: 450px) {
+    gap: 0.8rem;
+  }
 `;
