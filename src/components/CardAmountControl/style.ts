@@ -7,11 +7,3 @@ export const StyledCardAmountControlWrapper = styled.div`
 
   font-size: 1.5rem;
 `;
-
-export const StyledPokemonCtrControlLabel = styled.label`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  font-size: 1.5rem;
-`
