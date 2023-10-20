@@ -1,5 +1,6 @@
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { setIsCardsClickable } from '../../store/reducers/cardsSlice';
+import { toggleWin } from '../../store/reducers/gameSlice';
 import { resetRound } from '../../store/reducers/roundSlice';
 import { resetGame } from '../../store/reducers/sharedThunks/resetGame';
 import { WindowBlinder } from '../WindowBlinder';
@@ -11,6 +12,7 @@ export function WinModal() {
   const { roundNumber } = useAppSelector((state) => state.game);
   const handleGameReset = () => {
     dispatch(resetRound());
+    dispatch(toggleWin());
     dispatch(resetGame(userSetNumberOfPokemons));
     dispatch(setIsCardsClickable(true));
   };
