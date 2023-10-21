@@ -10,6 +10,9 @@ import poke9 from '../assets/pokemon-imgs/324.svg';
 import poke10 from '../assets/pokemon-imgs/475.svg';
 import poke11 from '../assets/pokemon-imgs/491.svg';
 import poke12 from '../assets/pokemon-imgs/8.svg';
+import poke13 from '../assets/pokemon-imgs/341.png';
+import poke14 from '../assets/pokemon-imgs/504.png';
+import poke15 from '../assets/pokemon-imgs/924.png';
 
 export const pokemonBackupImgs = [
   poke1,
@@ -24,4 +27,7 @@ export const pokemonBackupImgs = [
   poke10,
   poke11,
   poke12,
+  poke13,
+  poke14,
+  poke15,
 ];
