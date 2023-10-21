@@ -23,6 +23,7 @@ export const fetchAndSetImgs = createAsyncThunk(
     { maxNumber, numberOfImgs }: { maxNumber: number; numberOfImgs: number },
     { dispatch }
   ) => {
+    dispatch(setPokemonCards([]));
     const currentImgIds: number[] = getRandomImageIds(maxNumber, numberOfImgs);
     const currentPokemons: TPokemon[] = await Promise.all(
       currentImgIds.map(async (id) => {
