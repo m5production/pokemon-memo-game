@@ -6,6 +6,7 @@ import { useEffect } from 'react';
 import { GlobalStyles } from '../shared-styles/GlobalStyles';
 import { StyledApp } from './style';
 import { initializeCards } from './initializeCards';
+import { ImageLoader } from '../components/ImageLoader';
 
 function App() {
   const { isWin } = useAppSelector((state) => state.game);
@@ -21,6 +22,7 @@ function App() {
       <Header />
       <Main />
       {isWin && <WinModal />}
+      <ImageLoader />
     </StyledApp>
   );
 }
