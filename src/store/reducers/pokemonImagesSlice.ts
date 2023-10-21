@@ -2,9 +2,10 @@ import { PayloadAction, createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { fetchTotalEvolutionChainsNumber } from '../../pokemonApi/fetchTotalEvolutionChainsNumber';
 import { pokemonBackupImgs } from '../../data/pokemonImgs';
 import { getRandomImageIds } from './helpers/cardsSetProcessors/getRandomImageIds';
-import { fetchPokemonImgByEvoluitonChainId } from '../../pokemonApi/fetchPokemonImgByEvoluitonChainId';
+import { fetchPokemonByEvoluitonChainId } from '../../pokemonApi/fetchPokemonImgByEvoluitonChainId';
 import { TPokemon } from '../../pokemonApi/type';
 import { setPokemonCards } from './cardsSlice';
+import { getBackupPokemon } from '../../data/getBackupPokemon';
 
 export interface IFetchedPokemonImages {
   totalCount: number;
@@ -24,10 +25,15 @@ export const fetchAndSetImgs = createAsyncThunk(
   ) => {
     const currentImgIds: number[] = getRandomImageIds(maxNumber, numberOfImgs);
     const currentPokemons: TPokemon[] = await Promise.all(
-      currentImgIds.map(
-        async (id) => await fetchPokemonImgByEvoluitonChainId(id)
-      )
-    );    
+      currentImgIds.map(async (id) => {
+        try {
+          return await fetchPokemonByEvoluitonChainId(id);
+        } catch {
+          const backupPokemon: TPokemon = getBackupPokemon();
+          return backupPokemon;
+        }
+      })
+    );
     const currentImgSrcs = currentPokemons.map(
       ({
         sprites: {
@@ -66,6 +72,5 @@ export const fetchedPokemonImagesSlice = createSlice({
   },
 });
 
-export const { setTotalCount } =
-  fetchedPokemonImagesSlice.actions;
+export const { setTotalCount } = fetchedPokemonImagesSlice.actions;
 export default fetchedPokemonImagesSlice.reducer;
