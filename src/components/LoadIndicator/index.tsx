@@ -4,7 +4,7 @@ import { StyledBall } from './style';
 export function LoadIndicator() {
   return (
     <WindowBlinder>
-      <StyledBall>Loading...</StyledBall>;
+      <StyledBall>Loading...</StyledBall>
     </WindowBlinder>
   );
 }
