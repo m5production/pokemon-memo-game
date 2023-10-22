@@ -206,7 +206,7 @@ Error generating stack: `+i.message+`
   animation-timing-function: ease-in;
   animation-iteration-count: infinite;
   animation-direction: alternate;
-`;function fw(){return N.jsxs(Mm,{children:[N.jsx(cw,{children:"Loading..."}),";"]})}function dw(){const e=ar(),{userSetNumberOfPokemons:t}=ft(r=>r.cards);B.useEffect(()=>{e(vl()),e(Am(t)),e(fo(!0))},[t]);const{cards:n}=ft(r=>r.cards);return n.length?N.jsx(l1,{$numberOfColumns:2,children:n.map(r=>N.jsx(M1,{...r},`${r.id}`))}):N.jsx(fw,{})}const pw=ie.main`
+`;function fw(){return N.jsx(Mm,{children:N.jsx(cw,{children:"Loading..."})})}function dw(){const e=ar(),{userSetNumberOfPokemons:t}=ft(r=>r.cards);B.useEffect(()=>{e(vl()),e(Am(t)),e(fo(!0))},[t]);const{cards:n}=ft(r=>r.cards);return n.length?N.jsx(l1,{$numberOfColumns:2,children:n.map(r=>N.jsx(M1,{...r},`${r.id}`))}):N.jsx(fw,{})}const pw=ie.main`
   flex-grow: 1;
   padding: 1rem 0;
   background-color: teal;
