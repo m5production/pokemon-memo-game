@@ -12,37 +12,16 @@ export function PokemonAmountControl() {
     dispatch(setUserSetNumberOfPokemons(pokemonCtr));
   };
 
-  const increasePokemonCtr = () => {
-    setPokemonCtr(pokemonCtr + 1);
-  };
-  const decreasePokemonCtr = () => {
-    setPokemonCtr(pokemonCtr - 1);
-  };
-
-  const isIncreaseBtnDisabled = pokemonCtr >= 15;
-  const isDecreaseBtnDisabled = pokemonCtr <= 2;
-
   return (
     <StyledCardAmountControlWrapper>
       How many pokemons will you play with?
-      <button
-        type="button"
-        onClick={increasePokemonCtr}
-        disabled={isIncreaseBtnDisabled}
-      >
-        +
-      </button>
-      <button
-        type="button"
-        onClick={decreasePokemonCtr}
-        disabled={isDecreaseBtnDisabled}
-      >
-        -
-      </button>
       <button type="button" onClick={handleSetBtnClick}>
         Set
       </button>
-      <PokemonAmountDisplay pokeomonCtr={pokemonCtr} />
+      <PokemonAmountDisplay
+        pokemonCtr={pokemonCtr}
+        setPokemonCtr={setPokemonCtr}
+      />
     </StyledCardAmountControlWrapper>
   );
 }
